@@ -28,7 +28,7 @@ async function createTicket(ticketTypeId: number, enrollmentId: number) {
         include: {
             TicketType: true
         }
-    })
+    });
 }
 
 const ticketsRepository = {

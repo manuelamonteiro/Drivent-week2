@@ -28,3 +28,18 @@ export type RequestError = {
   name: string,
   message: string,
 };
+
+export type cardData = {
+  issuer: string,
+  number: number,
+  name: string,
+  expirationDate: Date,
+  cvv: number
+}
+
+export type paymentData = {
+  ticketId: number,
+  cardIssuer: string,
+  cardLastDigits: string,
+  value: number
+}
