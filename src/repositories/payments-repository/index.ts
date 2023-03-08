@@ -1,6 +1,5 @@
 import { prisma } from "@/config";
-import { cardData, paymentData } from "@/protocols";
-import { TicketStatus } from "@prisma/client";
+import { paymentData } from "@/protocols";
 
 async function getTicketById(id: number) {
     return prisma.ticket.findFirst({
@@ -25,26 +24,10 @@ async function createPayment(paymentData: paymentData) {
 }
 
 
-async function updateTicketPayment(ticketId: number) {
-    return prisma.ticket.update({
-      where: {
-        id: ticketId,
-      },
-      data: {
-        status: TicketStatus.PAID,
-      },
-      include: {
-        TicketType: true
-      },
-    });
-  }
-
-
 const paymentsRepository = {
     getTicketById,
     findPayment,
-    createPayment,
-    updateTicketPayment
+    createPayment
 };
 
 export default paymentsRepository;
