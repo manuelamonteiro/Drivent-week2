@@ -31,6 +31,14 @@ async function createTicket(ticketTypeId: number, enrollmentId: number) {
     });
 }
 
+async function getTicketById(id: number) {
+    return prisma.ticket.findFirst({
+        where: {
+            id: id
+        }
+    });
+}
+
 async function updateTicketPayment(ticketId: number) {
     return prisma.ticket.update({
         where: {
@@ -49,6 +57,7 @@ const ticketsRepository = {
     findManyTicketsTypes,
     getTicketByUserId,
     createTicket,
+    getTicketById,
     updateTicketPayment
 };
 

@@ -8,7 +8,7 @@ async function getPaymentByIdService(ticketId: number, userId: number) {
 
     if (!ticketId) throw { type: "BadRequest", message: "Invalid body!" };
 
-    const ticket = await paymentsRepository.getTicketById(ticketId);
+    const ticket = await ticketsRepository.getTicketById(ticketId);
     if (!ticket) throw notFoundError();
 
     const enrollmentUser = await enrollmentRepository.findEnrollmentByUserId(userId);
@@ -21,7 +21,7 @@ async function getPaymentByIdService(ticketId: number, userId: number) {
 
 async function postPaymentService(ticketId: number, userId: number, cardData: cardData) {
 
-    const ticket = await paymentsRepository.getTicketById(ticketId);
+    const ticket = await ticketsRepository.getTicketById(ticketId);
     if (!ticket) throw notFoundError();
 
     const enrollmentUser = await enrollmentRepository.findEnrollmentByUserId(userId);
